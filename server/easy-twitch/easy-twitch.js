@@ -42,7 +42,27 @@ class EasyTwitch {
   };
 }
 
-module.exports = EasyTwitch;
+// const fetchGames = async() => {
+//   try {
+//     console.log(await api.games())
+//   } catch(e) {
+//     console.log(e)
+//   }
+// }
+
+// const fetchStreamers = async() => {
+//   try {
+//     const games = await api.games()
+//     const gameId = games[0].game_id
+//     console.log(await api.streamers(gameId))
+//   } catch(e) {
+//     console.log(e)
+//   }
+// }
+
+module.exports = {
+  EasyTwitch
+};
 
 
 
