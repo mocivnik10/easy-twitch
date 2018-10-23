@@ -5,27 +5,41 @@ class EasyTwitch {
     this.API_KEY = API_KEY;
   }
 
-  games() {
-    var instance = axios.create({
-      baseURL: 'https://api.twitch.tv',
-      headers: {
-        'Client-ID': this.API_KEY,
-        'content-type': 'application/json'
-      }
-    })
-
-    instance.get('/helix/streams?first=10')
-      .then(function (response) {
-        console.log(response.data);
+  async games() {
+  
+    try {
+      var instance = axios.create({
+        baseURL: 'https://api.twitch.tv',
+        headers: {
+          'Client-ID': this.API_KEY,
+          'content-type': 'application/json'
+        }
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+      const response = await instance.get('/helix/streams?first=10')
+      return response.data.data;
+    } catch(e) {
+      throw e;
+    }
   };
 
-  streamers(gameId) {
+  async streamers(gameId) {
+    try {
+      var instance = axios.create({
+        baseURL: 'https://api.twitch.tv',
+        headers: {
+          'Client-ID': this.API_KEY,
+          'content-type': 'application/json'
+        }
+      })
 
-  }
+      const response = await instance.get(`/helix/streams?game_id=${gameId}`)
+      return response.data.data;
+    } catch(e) {
+      throw e;
+    }
+    
+  };
 }
 
 module.exports = EasyTwitch;
