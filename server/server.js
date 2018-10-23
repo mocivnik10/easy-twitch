@@ -1,7 +1,2 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-const request = require('request');
+const axios = require('axios');
 const yargs = require('yargs');
-
-var app = express();
-app.use(bodyParser.json());
