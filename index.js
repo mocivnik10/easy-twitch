@@ -17,7 +17,17 @@ class EasyTwitch {
       })
 
       const response = await instance.get('/helix/streams?first=10')
-      return response.data.data;
+      const games = []
+      response.data.data.map((game) => {
+        games.push({
+          title: game.title,
+          viewer_count: game.viewer_count,
+          game_id: game.game_id,
+          thumbnail_url: game.thumbnail_url
+        })
+      })
+      
+      return games;
     } catch(e) {
       throw e;
     }
@@ -34,7 +44,15 @@ class EasyTwitch {
       })
 
       const response = await instance.get(`/helix/streams?game_id=${gameId}`)
-      return response.data.data;
+      const streamers = [];
+      response.data.data.map((streamer) => {
+        streamers.push({
+          user_name: streamer.user_name,
+          viewer_count: streamer.viewer_count,
+          title: streamer.title
+        })
+      })
+      return streamers;
     } catch(e) {
       throw e;
     }
