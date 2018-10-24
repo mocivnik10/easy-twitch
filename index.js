@@ -5,7 +5,7 @@ class EasyTwitch {
     this.API_KEY = API_KEY;
   }
 
-  async games(howMany) {
+  async games() {
   
     try {
       var instance = axios.create({
@@ -16,14 +16,13 @@ class EasyTwitch {
         }
       })
 
-      const response = await instance.get(`/helix/streams?first=${howMany}`)
+      const response = await instance.get(`/helix/games/top`)
       const games = []
       response.data.data.map((game) => {
         games.push({
-          title: game.title,
-          viewer_count: game.viewer_count,
-          game_id: game.game_id,
-          thumbnail_url: game.thumbnail_url
+          id: game.id,
+          name: game.name,
+          box_art_url: game.box_art_url
         })
       })
       
