@@ -60,9 +60,7 @@ class EasyTwitch {
 //   }
 // }
 
-module.exports = {
-  EasyTwitch
-};
+module.exports = EasyTwitch;
 
 
 
